@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>解构赋值</title>
+    <script type="text/javascript">
+
+
+        window.onload = function () {
+            /**
+             * 数组的解构赋值
+             * 即声明又赋值
+             */
+            {
+                // 等号两边相等
+                {
+                    let arr = [1, 2, 3];
+                    let [a, b, c] = arr;
+                    console.log(a, b, c); // 1 2 3
+                }
+
+                // 等号两边不完全相同
+                {
+                    let arr = [1, 2, 3];
+                    let [a, b, c, d = "我是默认值", e] = arr;
+                    console.log(a, b, c, d, e); // 1 2 3 我是默认值 undefined
+                }
+
+                // 当a为undefined时用默认值
+                {
+                    let [a = '我是默认值', b, c] = [, 1, 2]
+                    console.log(a, b, c); // 我是默认值 1 2
+                }
+
+            }
+            /**
+             * 对象的结构赋值
+             * 对象的解构赋值是根据key值进行匹配
+             */
+            {
+                // 基本实例
+                {
+                    let {name, age} = {name: 'zs', age: 23}
+                    console.log(name, age); // zs 23
+                }
+                // 声明的变量和对象的属相不匹配时等价于声明了变量未初始化,值未undefined
+                {
+                    let {Name, age} = {name: 'zs', age: 23}
+                    console.log(Name, age); // undefined  23
+                }
+                // 声明的变量名和对象的key不完全一样时
+                {
+                    // 1取:根据等号左侧的name匹配对象的name拿到对象的值
+                    // 2赋:将拿到的值赋给声明的变量Name
+                    let {name: Name, age} = {name: 'zs', age: 23}
+                    // let {name:Name,age:age} = {name:'zs',age:23} 助记:name(第一个)key,Name(第二个)要声明的变量
+                    console.log(Name, age); // zs  23
+                }
+                // 当变量已经被声明了,需要用()将结构赋值包起来
+                {
+                    let name, age;
+                    ({name, age} = {name: 'zs', age: 23})
+                    console.log(name, age); // zs 23
+                }
+                // 赋默认值
+                {
+                    let {name = '张三', age, gender} = {age: 23}
+                    console.log(name, age, gender); // 张三 23 undefined
+                }
+
+
+            }
+            // 其他
+            {
+                {
+                    //当等号右侧是字符串时,将字符串的长度赋给声明的变量
+                    {
+                        let {length} = "hello es6"
+                        console.log("length = " + length); // length = 9
+                    }
+                }
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象的深拷贝</title>
+    <script type="text/javascript">
+        window.onload = function () {
+            // 利用JSON赋值,缺点:只适用于键值对类型的对象(json类型的对象),有函数时不适合
+            {
+                let ls = {name: "张三", age: 18}
+                let ww = JSON.parse(JSON.stringify(ls))
+                ls.name = "李四";
+                ww.name = "王五";
+                // 两个对象相互对立,各自修改互不影响
+                console.log("ls = " + JSON.stringify(ls)); // ls ={"name":"李四","age":18}
+                console.log("ww = " + JSON.stringify(ww)); // ww ={"name":"王五","age":18}
+            }
+
+            // 只供借鉴
+            {
+                let dog = {
+                    name: "小白",
+                    sex: "公",
+                    firends: [
+                        {
+                            name: "小黄",
+                            sex: "母"
+                        }
+                    ]
+                }
+
+                function deepCopy(obj) {
+                    if (obj === null) return null
+                    if (typeof obj !== 'object') return obj
+                    if (obj instanceof RegExp) return new RegExp(obj)
+                    if (obj instanceof Date) return new Date(obj)
+                    let newObj = new obj.constructor
+                    for (let key in obj) {
+                        newObj[key] = deepCopy(obj[key])
+                    }
+                    return newObj
+                }
+
+                let dogcopy = deepCopy(dog)
+                dog.firends.push({name: "小红", sex: "母"})
+                console.log(dogcopy)
+            }
+            // 只供借鉴
+            {
+                function deepCopy(fromObj, toObj) { // 深拷贝函数
+                    // 容错
+                    if (fromObj === null) return null // 当fromObj为null
+                    if (fromObj instanceof RegExp) return new RegExp(fromObj) // 当fromObj为正则
+                    if (fromObj instanceof Date) return new Date(fromObj) // 当fromObj为Date
+
+                    toObj = toObj || {}
+
+                    for (let key in fromObj) { // 遍历
+                        if (typeof fromObj[key] !== 'object') { // 是否为对象
+                            toObj[key] = fromObj[key] // 如果为普通值，则直接赋值
+                        } else {
+                            if (fromObj[key] === null) {
+                                toObj[key] = null
+                            } else {
+                                toObj[key] = new fromObj[key].constructor // 如果为object，则new这个object指向的构造函数
+                                deepCopy(fromObj[key], toObj[key]) // 递归
+                            }
+                        }
+                    }
+                    return toObj
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

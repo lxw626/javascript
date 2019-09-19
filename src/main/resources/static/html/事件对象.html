@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function(){
+				var btn = document.getElementById("btn");
+				btn.onclick = function(e){
+					//解决浏览器兼容性问题
+//					如果浏览器传进来,我们就用传进来的,如果不传我们就自己过去
+					e = e || window.event
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<input type="button" id="btn" value="提交" />
+	</body>
+</html>

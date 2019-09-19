@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/**
+			 * 事件委托:将事件绑定给元素的共同祖先元素,这样当后代元素的事件被触发时,回一直冒泡到祖先元素
+			 * 从而通过祖先元素的响应函数来处理
+			 */
+			window.onload = function() {
+				var btn = document.getElementById("btn")
+				var ul = document.getElementById("ul")
+				btn.onclick = function() {
+						var li = document.createElement("li")
+						li.innerHTML = "<a href='avascript:;' class='link'>新的超链接</a>";
+						ul.appendChild(li)
+					}
+					/**
+					 * 给所有的a元素绑定单击事件
+					 * 缺点:新加入的没有绑定
+					 */
+					//				var allA = document.getElementsByTagName("a");
+					//				for(var i=0;i<allA.length;i++){
+					//					allA[i].onclick = function(){
+					//						alert("超链接的回调函数");
+					//					}
+					//				}
+					/**
+					 * 通过事件的委派给所有的超链接添加单击事件处理函数
+					 */
+				ul.onclick = function(e) {
+					e = e || window.e;
+					if(e.target.className == "link"){
+						alert("超链接被点击了");
+					}
+					
+				}
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<button id="btn">添加一个超链接</button>
+		<ul id="ul" style="background: #bfa;">
+			<li>
+				<p >我是p元素</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="link">超链接一</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="link">超链接二</a>
+			</li>
+			<li>
+				<a href="javascript:;" class="link">超链接三</a>
+			</li>
+		</ul>
+	</body>
+
+</html>

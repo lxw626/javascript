@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		/**
+		 * 构造函数的执行过程:
+		 * 1.new 一个对象
+		 * 2.将this设置为new出来的对象
+		 * 3.逐行执行方法里面的代码
+		 * 4.返回new出来的对象
+		 * @param {Object} name
+		 * @param {Object} age
+		 * @param {Object} gender
+		 */
+		//弊端:每次调用构造函数都会创建sayHello函数
+			function Person(name,age,gender){
+				this.name=name;
+				this.age=age;
+				this.gender=gender;
+				this.sayHello = function(){
+					console.log("大家好,我是:"+this.name)
+				}
+			}
+			//作为普通函数调用,没有返回值,返回undefined
+			console.log("Person:"+Person())
+			//作为构造函数调用,返回new出来的对象
+			console.log("Person:"+new Person())
+			/**
+			 * 解决办法
+			 * 函数中会隐士的传进来一个原型对象prototype
+			 */
+			Person.prototype.sayHi = function (){
+				console.log("hi,i am :"+this.name)
+			}
+			Person.prototype.address="地球"
+			var swk = new Person("孙悟空",18,"男");
+			swk.sayHello();
+			swk.sayHi();
+			//首先去swk的构造函数里面找address属相,找到则,找不到再去swk的原型对象里面找,找到则使用
+			console.log(swk.name)
+			console.log(swk.address)
+			console.log("address" in swk);
+			console.log(swk.hasOwnProperty("address"))
+			console.log(swk.__proto__.hasOwnProperty("address"))
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/**
+			 * 浏览器的加载顺序,先加载按钮(没出来也没有报错,加载完还没有渲染??),再弹出hello,最后给按钮绑定事件
+			 */
+			window.onload = function() {
+//				alert("hello")
+					// 给事件对应的属性绑定响应函数
+				btn.onclick = function() {
+					alert("hello")
+				}
+				alert("hello")
+			}
+		</script>
+	</head>
+
+	<body>
+		<button id='btn'>我是一个按钮</button>
+	</body>
+
+</html>

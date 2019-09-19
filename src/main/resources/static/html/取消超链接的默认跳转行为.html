@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			window.onload = function() {
+				var a1 = document.getElementById("a1")
+				a1.onclick = function() {
+						alert("hello")
+						// 取消超链接的跳转行为
+						return false;
+				}
+				var a2 = document.getElementById("a2")
+				a2.onclick = function() {
+					alert("hello")
+				}
+				
+
+			}
+		</script>
+	</head>
+
+	<body>
+		<a href="index.html" id="a1">我是a1</a><br>
+		<!-- 第二种取消超链接的默认跳转行为-->
+		<a href="javascript:;" id="a2">我是a2</a><br>
+	</body>
+
+</html>

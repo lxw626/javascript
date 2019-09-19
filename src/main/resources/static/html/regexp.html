@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var reg = new  RegExp("a","i");
+			console.log(reg)
+			reg = /a/i;
+			var str = 'abc';
+			console.log(reg.test(str))
+			reg = /a|b/
+			console.log(reg.test(str))
+			reg = /[ab]/
+			console.log(reg.test(str))
+			reg = /[a-z]/
+			console.log(reg.test(str))
+			reg = /[A-z]/
+			console.log(reg.test(str))
+			/**
+			 * 量词
+			 * ?:0到一个
+			 * +:1到多个
+			 * *:0到多个
+			 * {n}:n个
+			 * {n,m}:n到m个
+			 * {n,}:n个以上
+			 * ^开头$结尾
+			 * .表示除换行和行结束之外的任意字符
+			 * \.  表示.
+			 * \b表示单词边界
+			 */
+			reg = /child/
+			console.log(reg.test("hellochildren"))
+			// 匹配child整个单词
+			reg = /\bchild\b/
+			console.log(reg.test("hello child"))
+			console.log(reg.test("hellochildren"))
+			//用正则表达式去除"   hello world  "前后的空格
+//			console.log("   hello world  ".trim())
+			reg = /^\s*|\s*$/g//以多个空格开头多个空格结束,全局匹配,如果没有全局匹配匹配到头之后就结束了
+			console.log("   hello world  ".replace(reg,""))
+			// 匹配电子邮件
+			reg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
+			console.log(reg.test("88888888888@163.com"))
+			console.log(reg.test("8888888888@qq.com"))
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		/**
+		 * 获取1970年1月1日0时0分0秒到现在的毫秒数
+		 */
+			var time = Date.now();
+			console.log(time)
+			/**
+			 * 星期:0-6表示星期天-星期流
+			 * 月份:0-11表示1月到12月
+			 */
+			var now = new Date();
+			console.log(now.getTime());
+			console.log(now)
+			// 获取日
+			console.log(now.getDate());
+			// 获取星期
+			console.log(now.getDay());
+			// 获取月份
+			console.log(now.getMonth());
+			// 获取4位数的年
+			console.log(now.getFullYear());
+			var d = new Date("2018-10-08");
+			console.log(d);
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

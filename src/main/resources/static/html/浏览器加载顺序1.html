@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/**
+			 * 浏览器的加载顺序,先弹出hello,在加载按钮,最后绑按钮绑定事件
+			 */
+			alert("hello")
+		</script>
+	</head>
+	<body>
+		<button id = 'btn'>我是一个按钮</button>
+		<script type="text/javascript">
+			var  btn = document.getElementById("btn");
+			// 给事件对应的属性绑定响应函数
+			btn.onclick = function (){
+				alert("hello")
+			}
+		</script>
+	</body>
+</html>

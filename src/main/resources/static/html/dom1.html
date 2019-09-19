@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/**
+			 * 浏览器的加载顺序,自上而下
+			 */
+			alert("hello")
+			var  btn = document.getElementById("btn");
+			// 给事件对应的属性绑定响应函数
+			btn.onclick = function (){
+				alert("hello")
+			}
+		</script>
+	</head>
+	<body>
+		<button id = 'btn'>我是一个按钮</button>
+	</body>
+</html>

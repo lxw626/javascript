@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript">
+		/**
+		 * typeof运算符（操作符）
+		 * typeof a，以字符串的形式返回a的类型
+		 */
+		/**
+		 * NaN是一个特殊的数字
+		 */
+			var a = NaN;
+			console.log(typeof a)
+			a = Number.MAX_VALUE;
+			console.log(a)
+			a = Number.MIN_VALUE;
+			console.log(a)
+			a = Infinity
+			console.log(a)
+			console.log(typeof a)//number
+			/**
+			 * js浮点数计算可能得到不准确的结果
+			 */
+			console.log(0.1+0.2)//0.30000000000000004
+			console.log( typeof null)//object
+			console.log( typeof undefined)//undefined
+			//
+			/**
+			 * 数据类型转换
+			 */
+			//1.1数字类型转字符串：调用该对象的toString（），null或undefined会报错
+			a = 123;
+			a = a.toString();
+			console.log("a的类型："+typeof a+"，a的值：" + a)
+			a = null;
+//			a = a.toString();//Cannot read property 'toString' of null
+			console.log("a的类型："+typeof a+"，a的值：" + a)
+			var b;
+//			b = b.toString();//Cannot read property 'toString' of undefined
+			console.log("b的类型："+typeof b+"，b的值：" + b)
+			//1.2调用String（）函数，String函数会将null转换为字符串“null”,将undefined转换为字符串“undefined”
+			a = 123;
+			a = String(a)
+			console.log("a的类型："+typeof a+"，a的值：" + a)
+			a = null;
+			a = String(a)
+			console.log("a的类型："+typeof a+"，a的值：" + a)
+			a = String(b)
+			console.log("b的类型："+typeof b+"，b的值：" + b)
+			/**
+			 * 字符串转数字
+			 * 注意：1.非纯数字转为NaN
+			 *       2.""转为0
+			 * 		 3.单个空格" "或者多个空格"   "转为0
+			 */
+			a = "123";
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);
+			a = "123abc";
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：NaN
+			a = "";
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：0
+			a = "  ";
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：0
+			/**
+			 * boolean转数字
+			 * ture转1
+			 * false转0
+			 */
+			a = true;
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：1
+			a = false;
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：0
+			/**
+			 * null转数字为0
+			 */
+			a = null;
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：0
+			/**
+			 * undefined转数字为NaN
+			 */
+			a = undefined;
+			a = Number(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：NaN
+			/**
+			 * 转换方式二:parseInt(a),parseFloat(a)
+			 * 注意：若a为非字符串类型，现将a转换为字符串类型，然后再转为数字类型。
+			 */
+			/**
+			 * 字符串转为有效的整数
+			 */
+			a = "123.1314abc456";
+			a = parseInt(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：123
+			/**
+			 * 字符串转为有效的浮点数
+			 */
+			a = "123.1314abc456";
+			a = parseFloat(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：123.1314
+			//注意
+			a = true;
+			a = parseInt(a);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：number，a的值：NaN
+			/**
+			 * 其他进制数字
+			 */
+			//16进制一0x开头
+			a = 0xff;//255
+			console.log(a);
+			//8进制以0开头
+			a = 070;//56
+			console.log(a);
+			//2进制以0b开头，有些浏览器不支持
+//			a = 0b10;
+//			console.log(a);//2
+//			注意：parseInt("070"),有些浏览器会按照10进制解析，有些会按照8进制解析，parseInt("070"，10)
+			console.log(parseInt("070"));
+			console.log(parseInt("070",8));
+			console.log(parseInt("070",10));
+			/**
+			 * 转换为Boolean为false的情况
+			 * 1.数字类型0和NaN
+			 * 2.字符串""（" "为true）
+			 * 3.null
+			 * 4.undefined
+			 * 
+			 */
+			a = Boolean(0);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：boolean，a的值：false
+			a = Boolean(NaN);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：boolean，a的值：false
+			a = Boolean("");
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：boolean，a的值：false
+			a = Boolean(" ");
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：boolean，a的值：true
+			a = Boolean(null);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：boolean，a的值：false
+			a = Boolean(undefined);
+			console.log("a的类型："+typeof a+"，a的值：" + a);//a的类型：boolean，a的值：false
+//			运算符部分
+			/**
+			 * 1.任何非字符串类型和字符串做+运算时先转为字符串再做字符串拼接运算
+			 * 2.除1外非数字类型参与数学运算时先转为数字类型再进行数学运算。
+			 * 任何数字和NaN运算结果都是NaN
+			 */
+			console.log(true+1)//2
+			console.log(true+false)//1
+			console.log(true+null)//1
+			console.log(true+NaN)//NaN
+			console.log(1 + 2+ "3")//33
+			console.log("1" + 2 + 3)//123
+			/**
+			 * 一元运算符
+			 * 1.typeof
+			 * 2.+ 去正数，可以快速将一个字符串转换为数字，例如：+"100"
+			 * 3.-取负数
+			 */
+			console.log(1 + +"2" + 3)//6
+			/**
+			 * 逻辑运算符注意
+			 * 非Boolean运算
+			 * 1.&&：第一个为false时返回第一个，否则返回第二个
+			 * 2.||：第一个为true时返回第一个。否则返回第二个
+			 */
+			console.log(123&&456)//456
+			console.log(""&&456)//""
+			console.log(123||456)//123
+			console.log(""||456)//456
+			/**
+			 * 关系运算符
+			 * 注意
+			 * 1.关系运算符一边为数字，一边为非数字(或两边均为Boolean)，先把非数字转换为数字再比较。
+			 * 2.关系运算符两边均为字符串时，会逐个比较字符编码，出现结果后不在比较后面的
+			 */
+			console.log(123>"hello")
+			console.log(true>false)
+			console.log(true>null)
+			console.log("123">"5")//false，因为1的编码小于5
+			/**
+			 * unicode编码
+			 */
+			console.log("\u2620")//
+			//插入2
+			
+			
+			//46for
+			
+			
+			
+		</script>
+	</head>
+	<body>
+		<!--unicode编码16进制对应的10进制-->
+		<h1 style="font-size: 100px;">&#9760;</h1>
+	</body>
+</html>

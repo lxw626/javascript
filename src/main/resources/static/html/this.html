@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			/**
+			 * 函数里面会传入一个隐式的参数this
+			 * this指向调用函数的对象
+			 */
+			var name = "全局name";
+			function xxx(){
+				console.log(this.name)
+			}
+			var obj ={
+				name:'孙悟空',
+				sayName:xxx
+			}
+			console.log(xxx==obj.sayName)
+			xxx()//xxx()属于window
+			obj.sayName()//
+			
+		</script>
+	</head>
+	<body>
+		<form action="" method="post">
+			<textarea name="test" rows="30" cols="100"></textarea>
+			<input type="submit" value="submit"/>
+		</form>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>字符串截取的三个方法</title>
+		<script type="text/javascript">
+		/**
+		 * slice(start, end)
+		 * 截取字符串,含头不含尾,不影响原串
+		 * end可以为负数,表示到倒数第end位
+		 * 
+		 */
+			var str = "0123456789";
+			var result = str.slice(1, 3);
+			console.log("str =" + str)
+			console.log("result =" + result)
+			str = "0123456789";
+			result = str.slice(1, -1);
+			console.log("result =" + result)
+			/**
+			 * substring(start,end)
+			 * 含头不含尾,不影响原串,
+			 * end为负数时默认当0处理(区别去slice),
+			 * 当start>end时自动交换顺序(区别去slice)
+			 */
+			str = "0123456789";
+			console.log("str =" + str)
+			result = str.substring(1, 3);
+			console.log("result =" + result)
+			str = "0123456789";
+			result = str.substring(1, -100);
+			console.log("result =" + result)//0
+			str = "0123456789";
+			result = str.substring(3, 1);
+			console.log("result =" + result)//12
+			/**
+			 * substr(start,num)
+			 * 不影响原串,从start位置开始截取num个
+			 * num为负数时当0处理
+			 */
+			str = "0123456789";
+			result = str.substr(1, 3);
+			console.log("str =" + str)
+			console.log("result =" + result)//123
+			str = "0123456789";
+			result = str.substr(1, 0);
+			console.log("result =" + result)
+			
+		</script>
+	</head>
+
+	<body>
+	</body>
+
+</html>

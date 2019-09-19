@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+			var zs = new Object();
+			console.log(zs);
+			zs.name = "张三";
+			/**
+			 * zs["age"]等价与zs.age
+			 * 好处[]里面可以传递变量
+			 */
+			zs["age"] = 23;
+			console.log(zs);
+			var hhh = "name";
+			console.log(zs[hhh]);
+			/**
+			 * 对象字面量
+			 * 对象字面量:{}等价与new Object()
+			 * 可以在创建对象时同时指定对象的属性
+			 * 语法:{属性1名:属性1值,属性2名:属性2值,...属性n名:属性n值},
+			 * 属性名可以加引号,也可以不加,建议不加,使用特殊的属性名必须加引号,
+			 * 最后一个属性后面不加逗号,加了也不报错,建议不加
+			 */
+			var obj = {}
+			/**
+			 * 枚举(遍历)对象里面的属性名以及属性值
+			 */
+			var swk = {
+				name:'孙悟空',
+				age:18,
+				address:'花果山'
+			}
+			for(var field in swk){
+				console.log(swk.field)
+				console.log(field+":"+swk[field])
+			}
+			
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

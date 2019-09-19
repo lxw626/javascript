@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>冒泡事件</title>
+		<style type="text/css">
+			#div {
+				width: 200px;
+				height: 200px;
+				background: yellowgreen;
+			}
+			
+			#span {
+				background: yellow;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function (){
+				/**
+				 * 事件冒泡(Bubble):当后代元素的事件被触发时,祖先元素的相同事件也会被触发
+				 * 取消事件的冒泡:even.cancelBubble = true;
+				 */
+				var span = document.getElementById("span")
+			span.onclick = function() {
+				alert("我是span的单击响应函数")
+			}
+			var div = document.getElementById("div")
+			div.onclick = function(even) {
+				alert("我是div的单击响应函数")
+				// 解决兼容性问题
+				even = even ||window.even;
+				// 取消冒泡
+				even.cancelBubble = true;
+			}
+			var body = document.body;
+			body.onclick = function() {
+				alert("我是body的单击响应函数")
+			}
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="div">
+			我是div
+			<span id="span">我是span</span>
+		</div>
+	</body>
+
+</html>

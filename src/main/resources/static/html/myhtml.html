@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div {
+				width: 100px;
+				height: 100px;
+				background-color: red !important;
+			}
+		</style>
+		<script type="text/javascript">
+			window.onload = function() {
+				/**
+				 * 通过dom读取/修改元素的css样式
+				 * 该方法读取/修改的样式为内联样式
+				 * 如果在样式表中加了"!important"(不建议写),表示该样式很重要,js没法覆盖(重写)
+				 * 设置内联样式:元素.style.样式=样式值
+				 * 读取内联样式:元素.style.样式
+				 * 
+				 */
+				var div = document.getElementById("div")
+				
+				var btn1 = document.getElementById("btn1")
+				btn1.onclick = function() {
+					div.style.width = "400px";
+					div.style.height = "400px"
+					div.style.backgroundColor = "yellow"
+				}
+				var btn2 = document.getElementById("btn2")
+				btn2.onclick = function() {
+					alert("div样式" + div.style.width + div.style.height + div.style.backgroundColor)
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<button id="btn1">修改div样式</button><br>
+		<button id="btn2">读取div样式</button><br>
+		<div id="div">
+
+		</div>
+	</body>
+
+</html>

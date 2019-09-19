@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>作用域</title>
+		<script type="text/javascript">
+			/**
+			 * var声明的函数提前
+			 * function xxx(){}声明的函数提前
+			 */
+			console.log(a)
+			var a = 10;
+			xxx();
+			function xxx(){
+				console.log("我是xxx")
+			}
+			/**
+			 * 函数的形参相当于在函数内部声明了一个变量
+			 */
+			var b = 10;
+			function funb(b){
+				console.log(b)
+			}
+			funb();
+			var c = 10;
+			function func(){
+				console.log(c)
+				var c = 5;
+			}
+			console.log(window.func)
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

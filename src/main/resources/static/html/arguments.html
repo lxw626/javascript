@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript">
+		/**
+		 * 隐士的传入一个类数组对象arguments
+		 * @param {Object} a
+		 * @param {Object} b
+		 */
+			function hello(a,b){
+				console.log(typeof arguments)//object
+				console.log(arguments)//object Arguments
+				console.log(arguments.length)//1
+				//当前正在执行的函数
+//				arguments.callee()
+			}
+			hello("张三 ")
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

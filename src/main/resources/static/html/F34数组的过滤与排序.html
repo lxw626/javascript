@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组的过滤与排序</title>
+    <script type="text/javascript">
+        var persons = [
+            {name:'张三',age:18},
+            {name:'李四',age:19},
+            {name:'王五',age:20},
+            {name:'赵六',age:21},
+            {name:'王小锤',age:8}
+        ]
+        window.onload = function (){
+            // 数组的过滤
+            {
+                function filterPersons(searchName){
+                    let fps = [...persons];
+                    fps = fps.filter(fs => fs.name.indexOf(searchName)!==-1)
+                    // 神坑
+                    // fps.filter(fs => fs.name.indexOf(searchName)!==-1)
+                    return fps;
+                }
+                let ps = filterPersons("王");
+                console.log("过滤后的数组长度");
+                console.log("ps.length = " + ps.length); // ps.length = 2
+            }
+            // 数组的排序
+            {
+                function sortPs(type){
+                    persons.sort(function(p1,p2){
+                        // 升序
+                        if(type==1){
+                            return p1.age-p2.age;
+                        }
+                        // 降序
+                        if(type==2){
+                            return p2.age-p1.age;
+                        }
+                    })
+                    return persons;
+                }
+                let ps1 = sortPs(1);
+                console.log("按照年龄顺序排列");
+                for (var i = 0; i < ps1.length; i++) {
+                    var obj = ps1[i];
+                    console.log(JSON.stringify(obj));
+                }
+                let ps2 = sortPs(2);
+                console.log("按照年龄倒序排列");
+                for (var i = 0; i < ps2.length; i++) {
+                    var obj = ps2[i];
+                    console.log(JSON.stringify(obj));
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

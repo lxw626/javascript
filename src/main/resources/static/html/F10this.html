@@ -16,9 +16,13 @@
 				name:'孙悟空',
 				sayName:xxx
 			}
-			console.log(xxx==obj.sayName)
-			xxx()//xxx()属于window
-			obj.sayName()//
+			console.log(xxx===obj.sayName) // true
+			xxx()// 全局name,xxx()属于window
+			obj.sayName()// 孙悟空
+			// 回调函数一般都是windows调用的吗??
+			{
+
+			}
 			
 		</script>
 	</head>

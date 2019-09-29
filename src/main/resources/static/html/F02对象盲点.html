@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>对象盲点</title>
+    <script type="text/javascript">
+        /**
+         * 读写对象属相的两种方式
+         * 第一种:zs.name
+         * 第二种:zs["age"]
+         *     使用场景:1.读取通过变量传递的对象的属性
+         *             2.读取特殊属性例如zs[user-name]
+         */
+        {
+            let zs = new Object();
+            zs["user-name"] = "张三";
+            zs.age = 23;
+            let variableName = "user-name";
+            console.log(variableName +":"+ zs[variableName],"age:"+zs.age);
+        }
+
+        /**
+         * 对象字面量
+         * 对象字面量:{}等价与new Object()
+         * 可以在创建对象时同时指定对象的属性
+         * 语法:{属性1名:属性1值,属性2名:属性2值,...属性n名:属性n值},
+         * 属性名可以加引号,也可以不加,建议不加,使用特殊的属性名必须加引号,
+         * 最后一个属性后面不加逗号,加了也不报错,建议不加
+         */
+        {
+            let person = {
+                "user-name":"张三",
+                age:23
+            }
+        }
+        /**
+         * 枚举(遍历)对象里面的属性名以及属性值
+         */
+        {
+            let swk = {
+                name: '孙悟空',
+                age: 18,
+                address: '花果山'
+            }
+            for (let field in swk) {
+                console.log(field + ":" + swk[field])
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+</body>
+</html>

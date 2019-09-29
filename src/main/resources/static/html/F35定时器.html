@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+    <script type="text/javascript">
+        var intervalId
+
+        function startInterval() {
+            intervalId = setInterval(function (name) {
+                console.log(name);
+            }, 1000, "张三");
+        }
+
+        function endInterval() {
+            intervalId && clearInterval(intervalId)
+        }
+
+        window.onload = function () {
+
+
+        }
+    </script>
+</head>
+<body>
+<button onclick="startInterval()">启动定时器</button>
+<button onclick="endInterval()">关闭定时器</button>
+
+</body>
+</html>

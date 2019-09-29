@@ -5,9 +5,10 @@
 		<title></title>
 		<script type="text/javascript">
 			/**
-			 * 浏览器的加载顺序,自上而下
+			 * 浏览器的加载顺序,自上而下.
 			 */
 			alert("hello")
+			// 此处获取不到btn,因为button还没有加载
 			var  btn = document.getElementById("btn");
 			// 给事件对应的属性绑定响应函数
 			btn.onclick = function (){

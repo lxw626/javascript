@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="./Person.js"></script>
+    <script src="./Car.js"></script>
+    <script>
+        let jmz = new Person('西域狂僧鸠摩智',28);
+        console.log('new Person()的返回值',jmz);
+        jmz.hello()
+        let tf = Person('丐帮帮主乔峰',18)
+        hello()
+        console.log('直接调用Person()的返回值',tf);
+    </script>
+</head>
+<body>
+<p>
+    new Person() 函数里面的this为Person对象,默认返回new出来的对象
+</p>
+<p>
+    Person() 直接调用函数里面的this为window对象,如果函数里面没有返回值则返回undefined
+</p>
+<p>
+    Person.js和Car.js同一个html里面引用后,两个js里面即可相互调用
+</p>
+<p>
+    < script src="./Person.js"\>< /script>相当于在这里运行了Person.js里面定义的一段代码
+</p>
+
+</body>
+</html>

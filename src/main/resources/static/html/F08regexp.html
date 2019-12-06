@@ -44,6 +44,17 @@
 			reg = /^\w{3,}(\.\w+)*@[A-z0-9]+(\.[A-z]{2,5}){1,2}$/
 			console.log(reg.test("88888888888@163.com"))
 			console.log(reg.test("8888888888@qq.com"))
+
+			// 子匹配
+			{
+			    let reg = /\{\{(.*)\}\}/
+				let name = "{{name}}"
+
+			    console.log(reg.test(name));
+			    // 子匹配
+				console.log(RegExp.$1); // name
+
+            }
 		</script>
 	</head>
 	<body>

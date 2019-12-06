@@ -16,7 +16,7 @@
             zs["user-name"] = "张三";
             zs.age = 23;
             let variableName = "user-name";
-            console.log(variableName +":"+ zs[variableName],"age:"+zs.age);
+            console.log(variableName + ":" + zs[variableName], "age:" + zs.age);
         }
 
         /**
@@ -29,8 +29,8 @@
          */
         {
             let person = {
-                "user-name":"张三",
-                age:23
+                "user-name": "张三",
+                age: 23
             }
         }
         /**
@@ -45,6 +45,51 @@
             for (let field in swk) {
                 console.log(field + ":" + swk[field])
             }
+        }
+        // 给对象添加属相
+        {
+            var obj = {
+                firstName: 'A',
+                lastName: 'B'
+            }
+            // 给对象添加属相fullName
+            Object.defineProperty(obj, "fullName", {
+                //访问描述符
+                // 当读取对象此属性值时自动调用, 将函数返回的值作为属性值, this为obj
+                get() {
+                    return obj.firstName + "-" + obj.lastName
+                },
+                // 当修改了对象的当前属性值时自动调用, 监视当前属性值的变化, 修改相关的属性, this为obj
+                set(value) {
+                    const names = value.split('-')
+                    this.firstName = names[0]
+                    this.lastName = names[1]
+                }
+            })
+            console.log("fullName:" + obj.fullName);
+            // 修改对象的fullName属相后自动调用该属相的回调函数set()
+            obj.fullName = "C-D"
+            console.log(obj.firstName, obj.lastName);
+
+            Object.defineProperty(obj, 'fullName2', {
+                configurable: false, //是否可以重新define
+                enumerable: true, // 是否可以枚举(for..in / keys()) 默认值为false
+                value: 'A-B', // 指定初始值
+                writable: false // value是否可以修改
+            })
+            // fullName2属相不能被重新定义,否则会报错.Cannot redefine property: fullName2
+            /*Object.defineProperty(obj, 'fullName2', {
+                configurable: true,
+                enumerable: true,
+                value: 'G-H',
+                writable: true
+            })*/
+            //4. Object.keys(obj): 得到对象自身可枚举(遍历)属性组成的数组
+            const names = Object.keys(obj)
+            console.log(names) //  ["firstName", "lastName", "fullName2"]
+            // 初始值不能被修改
+            obj.fullName2 = "E-F"
+            console.log("fullName2:" + obj.fullName2);
         }
 
 

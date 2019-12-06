@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MindMapping</title>
+</head>
+<body>
+<!--<div style="background: bisque;border:1px solid yellowgreen;height: 30px;position: absolute;left: 10px;top: 70px">密码错误</div>-->
+<!--<div style="background: bisque;border:1px solid yellowgreen;height: 30px;position: absolute;left: 150px;top: 10px;">错误原因1</div>-->
+<!--<div style="background: bisque;border:1px solid yellowgreen;height: 30px;position: absolute;left: 150px;top: 70px;">错误原因2</div>-->
+<!--<div style="background: bisque;border:1px solid yellowgreen;height: 30px;position: absolute;left: 150px;top: 130px;">错误原因3</div>-->
+<canvas id="myCanvas" style="color: red"></canvas>
+
+<script type="text/javascript">
+    var tox = 10;
+    var toy = 10;
+    var errorSize = 7;
+    var divStyle = 'background: bisque;border:1px solid yellowgreen;height: 30px;position: absolute;'
+    var objs = [
+        {
+            id: '1',
+            classNmae: 'neure',
+            parentId: '',
+            letf: 10,
+            top: 70,
+            text: '错误原因'
+        },
+        {
+            id: '2',
+            classNmae: 'neure',
+            parentId: '1',
+            letf: 150,
+            top: 10,
+            text: '错误原因1'
+        },
+        {
+            id: '3',
+            parentId: '1',
+            classNmae: 'neure',
+            letf: 150,
+            top: 70,
+            text: '错误原因2'
+        },
+        {
+            id: '3',
+            parentId: '1',
+            classNmae: 'neure',
+            letf: 150,
+            top: 130,
+            text: '错误原因3'
+        },
+    ]
+    var body = document.body;
+    var documentFragment = document.createDocumentFragment();
+    for (var i = 0; i < objs.length; i++) {
+        var element = document.createElement('div');
+        element.setAttribute('style', divStyle)
+        element.setAttribute('class', objs[i].classNmae)
+        element.style.left = objs[i].letf + 'px'
+        element.style.top = objs[i].top + 'px'
+        element.innerText = objs[i].text
+        documentFragment.appendChild(element)
+    }
+    body.appendChild(documentFragment)
+
+    var c = document.getElementById("myCanvas");
+    var neures = document.getElementsByClassName("neure");
+    neures = Array.prototype.slice.call(neures);
+    neures.forEach((neure) => {
+        // 左边的偏移量
+        let offsetLeft = neure.offsetLeft;
+        // 上边偏移量
+        let offsetTop = neure.offsetTop;
+        // 外宽度
+        let offsetWidth = neure.offsetWidth;
+        // 外高度
+        let offsetHeight = neure.offsetHeight;
+        let centerY = offsetTop+ offsetHeight/2
+        console.log(centerY);
+    })
+
+    var cxt = c.getContext("2d");
+    // 竖线
+    cxt.moveTo(75, 26 - errorSize);
+    cxt.lineTo(75, 146 - errorSize);
+    // 上横线
+    cxt.moveTo(75, 26 - errorSize);
+    cxt.lineTo(140, 26 - errorSize);
+    //中横线
+    cxt.moveTo(75 - errorSize, 86 - errorSize);
+    cxt.lineTo(140, 86 - errorSize);
+    // 下横线
+    cxt.moveTo(75, 146 - errorSize);
+    cxt.lineTo(140, 146 - errorSize);
+
+    cxt.stroke();
+
+</script>
+</body>
+</html>

@@ -88,10 +88,10 @@
             let xxx = arr.map(e => e.name)
             // 返回对象必须要加(),不加()是代码块
             let hhh = arr.map(e => ({
-                name:e.name,
-                age:100+e.age
+                name: e.name,
+                age: 100 + e.age
             }))
-            console.log("数组的map方法", xxx,hhh);
+            console.log("数组的map方法===========>", xxx, hhh);
         }
 
         /**
@@ -134,11 +134,28 @@
             console.log("splice", "原数组", arr) //唐僧,玉兔精,蜘蛛精
             console.log("splice", "删除的子数组", arr2) //孙悟空,猪八戒,沙和尚"
         }
+        // 将伪数组转化为数组
+        {
+            let names = function () {
+                let arr = Array.prototype.slice.call(arguments)
+                // arr类型是object,instanceof Array却为true
+                console.log("arguments的类型:" + typeof arguments, "arr的类型:" + typeof arr, "arr是否是数组类型:" + (arr instanceof Array));
+                console.log(arguments, arr);
+            }
+            names("张三", "李四", "王五")
+
+        }
+        // 填充数组
+        {
+            let fill = Array(5).fill("hello");
+            console.log(fill);
+        }
 
     </script>
 </head>
 
 <body>
+
 
 </body>
 

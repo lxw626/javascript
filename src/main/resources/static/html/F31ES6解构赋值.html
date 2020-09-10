@@ -80,6 +80,15 @@
                     }
                 }
             }
+            {
+              // 结构赋值为对象的浅拷贝
+              let persons = [{name :'张三', age:18},{name :'李四', age:28}]
+              let persons2 = [...persons]
+              // let persons2 = JSON.parse(JSON.stringify(persons))
+              persons2[0].age=100
+              console.log(JSON.stringify(persons))
+              console.log(JSON.stringify(persons2))
+            }
 
 
         }
